@@ -158,6 +158,21 @@
 (use-package which-key
   :hook (after-init . which-key-mode))
 
+;; todo highlight
+(use-package hl-todo
+  :hook (after-init . global-hl-todo-mode)
+  :config
+  (setq hl-todo-keyword-faces
+        `(("TODO"  . ,(face-foreground 'warning))
+          ("FIXME" . ,(face-foreground 'error))
+          ("NOTE"  . ,(face-foreground 'success)))))
+
+;; Flash la ligne courante
+(use-package nav-flash
+  :defines compilation-highlight-overlay
+  :functions windmove-do-window-select
+  :hook ((imenu-after-jump switch-window-finish) . nav-flash-show))
+
 (provide 'core-ui)
 
 ;;; core-ui.el ends here
