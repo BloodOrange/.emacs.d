@@ -14,8 +14,15 @@
     :hook (global-flycheck-mode . flycheck-pos-tip-mode)
     :config (setq flycheck-pos-tip-timeout 30))
 
-  (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
-    [0 0 0 0 0 4 12 28 60 124 252 124 60 28 12 4 0 0 0 0]))
+  (require 'fringe-helper)
+  (fringe-helper-define 'flycheck-fringe-bitmap-double-arrow 'center
+    "...X...."
+    "..XX...."
+    ".XXX...."
+    "XXXX...."
+    ".XXX...."
+    "..XX...."
+    "...X...."))
 
 (provide 'core-flycheck)
 

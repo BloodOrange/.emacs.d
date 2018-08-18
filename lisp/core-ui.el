@@ -16,6 +16,10 @@
  fringe-indicator-alist (delq (assq 'continuation fringe-indicator-alist)
                               fringe-indicator-alist)
 
+ ;; Minibuffer resizing
+ resize-mini-windows 'grow-only
+ max-mini-window-height 0.3
+
  c-default-style    "linux"
  c-basic-offset     4
  tab-width          4
@@ -27,7 +31,7 @@
 
 ;; Taille des bordures
 (fringe-mode 3)
-(push `(left-fringe . ,3) default-frame-alist)
+(push `(left-fringe  . ,3) default-frame-alist)
 (push `(right-fringe . ,3) default-frame-alist)
 
 ;; Pas de menu, toolbar, scrollbar

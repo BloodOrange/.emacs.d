@@ -1,43 +1,39 @@
 ;;; core-vcs.el -*- lexical-binding: t; -*-
 
 (use-package gitconfig-mode
-  :ensure t
   :mode ("/\\.?git/?config$" "/\\.gitmodules$")
   :init (add-hook 'gitconfig-mode-hook 'flyspell-mode))
 
 (use-package gitignore-mode
-  :ensure t
   :mode ("/\\.gitignore$"
          "/\\.git/info/exclude$"
          "/git/ignore$"))
 
 (use-package git-gutter
-  :ensure t
+  :ensure git-gutter-fringe
   :commands (git-gutter-mode git-gutter:next-hunk git-gutter:previous-hunk
              git-gutter:popup-hunk git-gutter:stage-hunk git-gutter:revert-hunk)
-  :hook ((text-mode-hook . git-gutter-mode)
-         (prog-mode-hook . git-gutter-mode)
-         (conf-mode-hook . git-gutter-mode))
+  :hook ((text-mode . git-gutter-mode)
+         (prog-mode . git-gutter-mode)
+         (conf-mode . git-gutter-mode))
 
   :config
-  (use-package git-gutter-fringe :ensure t)
-
+  (require 'git-gutter-fringe)
   ;; colored fringe "bars"
-  (define-fringe-bitmap 'git-gutter-fr:added
-    [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-    nil nil 'center)
-  (define-fringe-bitmap 'git-gutter-fr:modified
-    [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
-    nil nil 'center)
-  (define-fringe-bitmap 'git-gutter-fr:deleted
-    [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
-    nil nil 'center)
+  (fringe-helper-define 'git-gutter-fr:added '(center repeated)
+    "XXX.....")
+  (fringe-helper-define 'git-gutter-fr:modified '(center repeated)
+    "XXX.....")
+  (fringe-helper-define 'git-gutter-fr:deleted 'bottom
+    "X......."
+    "XX......"
+    "XXX....."
+    "XXXX....")
 
   ;; Refreshing git-gutter
   (add-hook 'focus-in-hook 'git-gutter:update-all-windows))
 
 (use-package git-messenger
-  :ensure t
   :commands git-messenger:popup-message
   :init (defvar git-messenger-map (make-sparse-keymap))
   :config
@@ -49,8 +45,7 @@
   :bind ("C-c g" . magit-status)
   :commands (magit-status))
 
-(use-package git-timemachine
-  :ensure t)
+(use-package git-timemachine)
 
 (provide 'core-vcs)
 
