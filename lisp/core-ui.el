@@ -39,8 +39,11 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 
+;; Cursor en barre
+(setq-default cursor-type 'bar)
+
 ;; Change la police
-(setq cactus-font (font-spec :family "Iosevka" :size 14 :antialias t))
+(setq cactus-font (font-spec :family "Iosevka" :size 16 :antialias t))
 (set-frame-font cactus-font t)
 (set-face-attribute 'default t :font cactus-font)
 
@@ -57,7 +60,9 @@
 
 ;; Chargement du thème doom et du doom-modeline
 (use-package doom-modeline
-  :hook (after-init . doom-modeline-init))
+  :hook (after-init . doom-modeline-init)
+  :config
+  (setq doom-modeline-bar-width 3))
 ;  :init
 ;  (setq doom-modeline-buffer-file-name-style 'relative-from-project))
 
