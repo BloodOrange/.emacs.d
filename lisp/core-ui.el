@@ -30,9 +30,9 @@
 (fset #'yes-or-no-p #'y-or-n-p)
 
 ;; Taille des bordures
-(fringe-mode 3)
-(push `(left-fringe  . ,3) default-frame-alist)
-(push `(right-fringe . ,3) default-frame-alist)
+(fringe-mode 4)
+(push `(left-fringe  . ,4) default-frame-alist)
+(push `(right-fringe . ,4) default-frame-alist)
 
 ;; Pas de menu, toolbar, scrollbar
 (menu-bar-mode -1)
@@ -62,7 +62,7 @@
 (use-package doom-modeline
   :hook (after-init . doom-modeline-init)
   :config
-  (setq doom-modeline-bar-width 3))
+  (setq doom-modeline-bar-width 4))
 ;  :init
 ;  (setq doom-modeline-buffer-file-name-style 'relative-from-project))
 
