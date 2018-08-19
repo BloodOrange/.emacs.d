@@ -21,9 +21,7 @@
 (require 'core-vcs)
 (require 'core-flycheck)
 (require 'core-lsp)
-;; lsp
-;; Gérer les fichiers cache
-;; Indication dans la bordure : erreur, modification git
+
 (require 'lang-org)
 (require 'lang-web)
 (require 'lang-go)
