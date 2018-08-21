@@ -76,7 +76,8 @@
   (use-package solaire-mode
     :hook ((change-major-mode after-revert ediff-prepare-buffer) . turn-on-solaire-mode)
     :config
-    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)))
+    (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
+    (solaire-mode-swap-bg)))
 
 ;; Smartparen
 (use-package smartparens
